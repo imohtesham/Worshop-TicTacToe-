@@ -5,6 +5,7 @@ public class TicTacToe {
     static char[] board = new char[10];
     static char player,computer;
     public static Scanner scanner = new Scanner(System.in);
+    private static int playLocation;
 
     static void createBoard(){
         for(int index = 0 ; index<10 ; index++) {
@@ -30,6 +31,24 @@ public class TicTacToe {
         System.out.println("------------------");
         System.out.println("  " + board[7] + "  |  " + board[8]  + "   | " + board[9] + "  ");
     }
+    public static void userMove() {
+        System.out.println("Enter Location 1-9 to Make Move");
+        playLocation = scanner.nextInt();
+        if (isEmpty() && playLocation < 10 && playLocation > 0) {
+            board[playLocation] = player;
+            showBoard();
+        } else {
+            System.out.println("Invalid Choice");
+        }
+    }
+
+    public static boolean isEmpty() {
+        if (board[playLocation] == ' ') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -37,6 +56,7 @@ public class TicTacToe {
         createBoard();
         getPlayerChoice();
         showBoard();
+        userMove();
 
 
     }
